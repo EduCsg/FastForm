@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+
+import '../components/input_formatters.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -205,6 +208,10 @@ class _HomePageState extends State<HomePage> {
                             elevation: 1,
                             child: TextFormField(
                               keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                TelefoneInputFormatter(),
+                              ],
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 prefixIcon: Icon(
@@ -261,6 +268,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                           elevation: 1,
                           child: TextField(
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(4),
+                            ],
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               contentPadding:
@@ -288,6 +299,10 @@ class _HomePageState extends State<HomePage> {
                     elevation: 1,
                     child: TextField(
                       keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        CpfInputFormatter(),
+                      ],
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
@@ -313,6 +328,10 @@ class _HomePageState extends State<HomePage> {
                     elevation: 1,
                     child: TextField(
                       keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        RgInputFormatter(),
+                      ],
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
