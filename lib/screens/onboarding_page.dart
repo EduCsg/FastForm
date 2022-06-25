@@ -15,6 +15,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final controller = PageController();
   bool isLastPage = false;
+  bool isFirstPage = true;
 
   @override
   void dispose() {
@@ -30,6 +31,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             controller: controller,
             onPageChanged: (index) {
               setState(() => isLastPage = index == 2);
+              setState(() => isFirstPage = index == 0);
             },
             children: [
               //pagina 1
@@ -197,62 +199,121 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
         ),
         bottomSheet: isLastPage
-            ? TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                  primary: Colors.white,
-                  backgroundColor: Colors.teal.shade700,
-                  minimumSize: const Size.fromHeight(80),
+            ? Container(
+                padding: const EdgeInsets.only(
+                  left: 50,
+                  right: 50,
+                  top: 0,
+                  bottom: 20,
                 ),
-                onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.setBool('showHome', true);
+                height: 120,
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Center(
+                      child: SmoothPageIndicator(
+                        controller: controller,
+                        count: 3,
+                        effect: const ColorTransitionEffect(
+                          spacing: 16,
+                          dotHeight: 8,
+                          dotWidth: 8,
+                          dotColor: Color.fromRGBO(49, 49, 49, 0.4),
+                          activeDotColor: Color.fromRGBO(49, 49, 49, 1),
+                        ),
+                        onDotClicked: (index) => controller.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 1000,
+                      height: 40,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color.fromRGBO(92, 218, 189, 1),
+                        ),
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setBool('showHome', true);
 
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
-                },
-                child: const Text(
-                  'Get Started',
-                  style: TextStyle(fontSize: 24),
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "Vamos Preencher!",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               )
             : Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                height: 80,
+                padding: const EdgeInsets.only(left: 50, right: 50, top: 0),
+                height: 120,
+                color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextButton(
-                      onPressed: () => controller.previousPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      ),
-                      child: const Text('BACK'),
-                    ),
-                    Center(
-                      child: SmoothPageIndicator(
-                          controller: controller,
-                          count: 3,
-                          effect: const WormEffect(
-                            spacing: 16,
-                            dotColor: Colors.black,
-                            activeDotColor: Colors.blueAccent,
-                          ),
-                          onDotClicked: (index) => controller.animateToPage(
-                                index,
+                    isFirstPage
+                        ? const SizedBox(width: 45)
+                        : SizedBox(
+                            width: 45,
+                            child: FloatingActionButton(
+                              onPressed: () => controller.previousPage(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
-                              )),
-                    ),
-                    TextButton(
-                      onPressed: () => controller.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
+                              ),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 224, 231, 227),
+                              child: const Icon(
+                                Icons.arrow_back_ios_rounded,
+                                size: 18,
+                                color: Color.fromARGB(255, 92, 218, 189),
+                              ),
+                            ),
+                          ),
+                    Center(
+                      child: SmoothPageIndicator(
+                        controller: controller,
+                        count: 3,
+                        effect: const ColorTransitionEffect(
+                          spacing: 16,
+                          dotHeight: 8,
+                          dotWidth: 8,
+                          dotColor: Color.fromRGBO(49, 49, 49, 0.4),
+                          activeDotColor: Color.fromRGBO(49, 49, 49, 1),
+                        ),
+                        onDotClicked: (index) => controller.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        ),
                       ),
-                      child: const Text('NEXT'),
+                    ),
+                    SizedBox(
+                      width: 45,
+                      child: FloatingActionButton(
+                        backgroundColor: const Color.fromRGBO(92, 218, 189, 1),
+                        child: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 18,
+                        ),
+                        onPressed: () => controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        ),
+                      ),
                     ),
                   ],
                 ),
