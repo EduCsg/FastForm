@@ -13,6 +13,56 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController dataInput = TextEditingController();
+  TextEditingController medicamentoInput = TextEditingController();
+
+  final List<Widget> _medicamentoList = [];
+
+  void _addMedicamento() {
+    setState(() {
+      _medicamentoList.add(_medicamento());
+    });
+  }
+
+  Widget _medicamento() {
+    return Column(
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color.fromRGBO(255, 213, 125, 1),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    medicamentoInput.text,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    color: const Color.fromRGBO(15, 15, 15, 1),
+                    iconSize: 18,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -374,6 +424,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      textInputAction: TextInputAction.go,
+                      onSubmitted: (value) {
+                        _addMedicamento();
+                        medicamentoInput.clear();
+                      },
+                      controller: medicamentoInput,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
@@ -386,7 +442,12 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 16,
                         ),
                         suffixIcon: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _addMedicamento();
+                            medicamentoInput.clear();
+
+                            FocusScope.of(context).requestFocus(FocusNode());
+                          },
                           icon: Icon(
                             Icons.add,
                             color: iconYellowColor,
@@ -394,6 +455,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Wrap(
+                    spacing: 8.0, // gap between adjacent chips
+                    runSpacing: 4.0, // gap between lines
+                    children: _medicamentoList,
                   ),
                 ]),
               ),
