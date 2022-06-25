@@ -1,12 +1,31 @@
-import './screens/home_page.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+import './screens/onboarding_page.dart';
+import './screens/home_page.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = await SharedPreferences.getInstance();
+  final showHome = prefs.getBool('showHome') ?? false;
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
+
+  runApp(MyApp(showHome: showHome));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final bool showHome;
+
+  const MyApp({
+    Key? key,
+    required this.showHome,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +39,7 @@ class MyApp extends StatelessWidget {
           bodyText1: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
         ),
       ),
-      home: HomePage(),
+      home: showHome ? const HomePage() : const OnboardingPage(),
     );
   }
 }
