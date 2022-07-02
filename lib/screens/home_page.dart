@@ -15,53 +15,23 @@ class _HomePageState extends State<HomePage> {
   TextEditingController dataInput = TextEditingController();
   TextEditingController medicamentoInput = TextEditingController();
 
-  final List<Widget> _medicamentoList = [];
+  final List<_Medicamento> _medicamentoList = [];
 
-  void _addMedicamento() {
+  void removeServiceCard(index) {
     setState(() {
-      _medicamentoList.add(_medicamento());
+      _medicamentoList.remove(index);
     });
   }
 
-  Widget _medicamento() {
-    return Column(
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color.fromRGBO(255, 213, 125, 1),
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    medicamentoInput.text,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    color: const Color.fromRGBO(15, 15, 15, 1),
-                    iconSize: 18,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onPressed: () {},
-                  )
-                ],
-              ),
-            ),
-          ],
+  void _addMedicamento() {
+    setState(() {
+      _medicamentoList.add(
+        _Medicamento(
+          onDelete: removeServiceCard,
+          yourText: medicamentoInput.text,
         ),
-      ],
-    );
+      );
+    });
   }
 
   @override
@@ -442,9 +412,13 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 16,
                         ),
                         suffixIcon: IconButton(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onPressed: () {
-                            _addMedicamento();
-                            medicamentoInput.clear();
+                            if (medicamentoInput.text.isNotEmpty) {
+                              _addMedicamento();
+                              medicamentoInput.clear();
+                            }
 
                             FocusScope.of(context).requestFocus(FocusNode());
                           },
@@ -500,6 +474,59 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _Medicamento extends StatelessWidget {
+  final Function(_Medicamento) onDelete;
+  final String yourText;
+
+  const _Medicamento({
+    Key? key,
+    required this.onDelete,
+    required this.yourText,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: const Color.fromRGBO(255, 213, 125, 1),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    yourText,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    color: const Color.fromRGBO(15, 15, 15, 1),
+                    iconSize: 18,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onPressed: () => onDelete(this),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
