@@ -30,15 +30,15 @@ class CpfInputFormatter extends TextInputFormatter
     final newText = StringBuffer();
 
     if (newValueLength >= 4) {
-      newText.write(newValue.text.substring(0, substrIndex = 3) + '.');
+      newText.write('${newValue.text.substring(0, substrIndex = 3)}.');
       if (newValue.selection.end >= 3) selectionIndex++;
     }
     if (newValueLength >= 7) {
-      newText.write(newValue.text.substring(3, substrIndex = 6) + '.');
+      newText.write('${newValue.text.substring(3, substrIndex = 6)}.');
       if (newValue.selection.end >= 6) selectionIndex++;
     }
     if (newValueLength >= 10) {
-      newText.write(newValue.text.substring(6, substrIndex = 9) + '-');
+      newText.write('${newValue.text.substring(6, substrIndex = 9)}-');
       if (newValue.selection.end >= 9) selectionIndex++;
     }
     if (newValueLength >= substrIndex) {
@@ -79,18 +79,18 @@ class TelefoneInputFormatter extends TextInputFormatter {
     }
 
     if (newValueLength >= 3) {
-      newText.write(newValue.text.substring(0, substrIndex = 2) + ') ');
+      newText.write('${newValue.text.substring(0, substrIndex = 2)}) ');
       if (newValue.selection.end >= 2) selectionIndex += 2;
     }
 
     if (newValue.text.length == 11) {
       if (newValueLength >= 8) {
-        newText.write(newValue.text.substring(2, substrIndex = 7) + '-');
+        newText.write('${newValue.text.substring(2, substrIndex = 7)}-');
         if (newValue.selection.end >= 7) selectionIndex++;
       }
     } else {
       if (newValueLength >= 7) {
-        newText.write(newValue.text.substring(2, substrIndex = 6) + '-');
+        newText.write('${newValue.text.substring(2, substrIndex = 6)}-');
         if (newValue.selection.end >= 6) selectionIndex++;
       }
     }
@@ -125,15 +125,15 @@ class RgInputFormatter extends TextInputFormatter {
     final newText = StringBuffer();
 
     if (newValueLength >= 3) {
-      newText.write(newValue.text.substring(0, substrIndex = 2) + '.');
+      newText.write('${newValue.text.substring(0, substrIndex = 2)}.');
       if (newValue.selection.end >= 2) selectionIndex++;
     }
     if (newValueLength >= 7) {
-      newText.write(newValue.text.substring(2, substrIndex = 5) + '.');
+      newText.write('${newValue.text.substring(2, substrIndex = 5)}.');
       if (newValue.selection.end >= 5) selectionIndex++;
     }
     if (newValueLength >= 10) {
-      newText.write(newValue.text.substring(5, substrIndex = 8) + '-');
+      newText.write('${newValue.text.substring(5, substrIndex = 8)}-');
       if (newValue.selection.end >= 8) selectionIndex++;
     }
 
