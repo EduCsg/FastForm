@@ -219,12 +219,17 @@ class _HomePageState extends State<HomePage> {
                                     firstDate: DateTime(1920),
                                     lastDate: DateTime.now());
 
-                                String formattedDate = DateFormat('dd/MM/yyyy')
-                                    .format(pickedDate!);
-                                setState(() {
-                                  dataInput.text =
-                                      formattedDate; //set output date to TextField value.
-                                });
+                                if (pickedDate != null) {
+                                  String formattedDate =
+                                      DateFormat('dd/MM/yyyy')
+                                          .format(pickedDate);
+                                  setState(() {
+                                    dataInput.text =
+                                        formattedDate; //set output date to TextField value.
+                                  });
+                                } else {
+                                  return;
+                                }
                               },
                             ),
                           ),
