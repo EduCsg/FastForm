@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -12,7 +13,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController nomeInput = TextEditingController();
+  TextEditingController maeInput = TextEditingController();
+  TextEditingController paiInput = TextEditingController();
   TextEditingController dataInput = TextEditingController();
+  TextEditingController telefoneInput = TextEditingController();
+  TextEditingController enderecoInput = TextEditingController();
+  TextEditingController numInput = TextEditingController();
+  TextEditingController cpfInput = TextEditingController();
+  TextEditingController rgInput = TextEditingController();
+
   TextEditingController medicamentoInput = TextEditingController();
 
   final List<_Medicamento> _medicamentoList = [];
@@ -92,6 +102,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      controller: nomeInput,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
@@ -117,6 +128,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      controller: maeInput,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
@@ -142,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      controller: paiInput,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(
@@ -227,6 +240,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             elevation: 1,
                             child: TextFormField(
+                              controller: telefoneInput,
                               keyboardType: TextInputType.number,
                               inputFormatters: [
                                 FilteringTextInputFormatter.digitsOnly,
@@ -260,6 +274,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         elevation: 1,
                         child: TextField(
+                          controller: enderecoInput,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             prefixIcon: Icon(
@@ -288,6 +303,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           elevation: 1,
                           child: TextField(
+                            controller: numInput,
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly,
                               LengthLimitingTextInputFormatter(4),
@@ -318,6 +334,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      controller: cpfInput,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -347,6 +364,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     elevation: 1,
                     child: TextField(
+                      controller: rgInput,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -449,7 +467,37 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: const Text(
+                        'Seu QR Code!',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      content: BarcodeWidget(
+                        barcode: Barcode.qrCode(),
+                        data:
+                            'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}',
+                        width: 200,
+                        height: 200,
+                      ),
+                      actions: [
+                        SizedBox(
+                          height: 40,
+                          child: TextButton(
+                            child: const Text('Fechar'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    barrierDismissible: false,
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: const Color.fromRGBO(91, 217, 189, 1),
                   fixedSize: Size(
