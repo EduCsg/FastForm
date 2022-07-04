@@ -183,9 +183,10 @@ class _HomePageState extends State<HomePage> {
                     height: 16,
                   ),
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Expanded(
+                        SizedBox(
+                          width: 140,
                           child: PhysicalModel(
                             color: Colors.white,
                             borderRadius: const BorderRadius.all(
@@ -230,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const SizedBox(
-                          width: 20,
+                          width: 16,
                         ),
                         Expanded(
                           child: PhysicalModel(
@@ -247,6 +248,8 @@ class _HomePageState extends State<HomePage> {
                                 TelefoneInputFormatter(),
                               ],
                               decoration: InputDecoration(
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(6, 8, 6, 8),
                                 border: InputBorder.none,
                                 prefixIcon: Icon(
                                   Icons.call,
@@ -293,36 +296,34 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       width: 20,
                     ),
-                    Column(children: [
-                      SizedBox(
-                        width: 60.0,
-                        child: PhysicalModel(
-                          color: Colors.white,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                          elevation: 1,
-                          child: TextField(
-                            controller: numInput,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(4),
-                            ],
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                              border: InputBorder.none,
-                              labelText: 'Nº',
-                              labelStyle: TextStyle(
-                                color: labelTextColor,
-                                fontSize: 16,
-                              ),
+                    SizedBox(
+                      width: 60.0,
+                      child: PhysicalModel(
+                        color: Colors.white,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                        elevation: 1,
+                        child: TextField(
+                          controller: numInput,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(4),
+                          ],
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                            border: InputBorder.none,
+                            labelText: 'Nº',
+                            labelStyle: TextStyle(
+                              color: labelTextColor,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       ),
-                    ]),
+                    ),
                   ]),
                   const SizedBox(
                     height: 16,

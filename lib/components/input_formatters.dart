@@ -63,7 +63,7 @@ class TelefoneInputFormatter extends TextInputFormatter {
     var substrIndex = 0;
     final newText = StringBuffer();
 
-    if (newValueLength == 11) {
+    if (newValueLength == 12) {
       if (newValue.text.toString()[2] != '9') {
         return oldValue;
       }
