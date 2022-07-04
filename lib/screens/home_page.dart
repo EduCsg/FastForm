@@ -54,29 +54,24 @@ class _HomePageState extends State<HomePage> {
     Color textColor = const Color.fromRGBO(47, 47, 47, 1);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: maxHeight * 0.10,
+        title: const Text(
+          'Prontuário',
+          style: TextStyle(
+            fontWeight: FontWeight.w900,
+            color: Colors.white,
+            fontSize: 30,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: const Color.fromRGBO(91, 217, 189, 1),
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
           physics: const ScrollPhysics(),
           child: Column(
             children: [
-              Container(
-                width: maxWidth,
-                color: const Color.fromRGBO(91, 217, 189, 1),
-                child: Column(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(top: 60, bottom: 15),
-                      child: Text(
-                        'Prontuário',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
-                          fontSize: 30,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               const SizedBox(
                 height: 12,
               ),
@@ -496,7 +491,6 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                          ),
                         ),
                       ],
                     ),
