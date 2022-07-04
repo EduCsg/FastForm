@@ -485,13 +485,19 @@ class _HomePageState extends State<HomePage> {
                         height: 200,
                       ),
                       actions: [
-                        SizedBox(
-                          height: 40,
-                          child: TextButton(
-                            child: const Text('Fechar'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color.fromRGBO(91, 217, 189, 1),
+                          ),
+                          child: const Text(
+                            'Fechar',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
                         ),
                       ],
                     ),
