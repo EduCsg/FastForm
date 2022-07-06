@@ -1,6 +1,7 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 import '../components/input_formatters.dart';
@@ -25,18 +26,27 @@ class _HomePageState extends State<HomePage> {
 
   TextEditingController medicamentoInput = TextEditingController();
 
-  final List<String> _medicamentoList = [];
+  final List<String> _medicamentoListString = [];
+  final List<_Medicamento> _medicamentoListWidget = [];
 
   void removeServiceCard(index) {
     setState(() {
-      _medicamentoList.remove(index);
+      _medicamentoListWidget.remove(index);
+      _medicamentoListString
+          .removeAt(_medicamentoListString.indexOf(index.yourText));
     });
   }
 
   void _addMedicamento() {
     setState(() {
-      _medicamentoList.add(
+      _medicamentoListString.add(
         medicamentoInput.text,
+      );
+      _medicamentoListWidget.add(
+        _Medicamento(
+          onDelete: removeServiceCard,
+          yourText: medicamentoInput.text,
+        ),
       );
     });
   }
@@ -432,10 +442,17 @@ class _HomePageState extends State<HomePage> {
                           highlightColor: Colors.transparent,
                           onPressed: () {
                             if (medicamentoInput.text.isNotEmpty) {
-                              _addMedicamento();
-                              medicamentoInput.clear();
+                              if (_medicamentoListString
+                                  .contains(medicamentoInput.text)) {
+                                Fluttertoast.showToast(
+                                    msg: "Medicamento ja registrado!");
+                                medicamentoInput.clear();
+                                return;
+                              } else {
+                                _addMedicamento();
+                                medicamentoInput.clear();
+                              }
                             }
-
                             FocusScope.of(context).requestFocus(FocusNode());
                           },
                           icon: Icon(
@@ -452,12 +469,7 @@ class _HomePageState extends State<HomePage> {
                   Wrap(
                     spacing: 8.0,
                     runSpacing: 4.0,
-                    children: _medicamentoList
-                        .map((e) => _Medicamento(
-                              onDelete: removeServiceCard,
-                              yourText: e,
-                            ))
-                        .toList(),
+                    children: _medicamentoListWidget,
                   ),
                 ]),
               ),
@@ -482,7 +494,7 @@ class _HomePageState extends State<HomePage> {
                       content: BarcodeWidget(
                         barcode: Barcode.qrCode(),
                         data:
-                            'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}/medicamentos:${_medicamentoList.toString()}',
+                            'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}/medicamentos:${_medicamentoListString.toString()}',
                         width: 200,
                         height: 200,
                       ),
