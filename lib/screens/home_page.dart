@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   TextEditingController medicamentoInput = TextEditingController();
 
-  final List<_Medicamento> _medicamentoList = [];
+  final List<String> _medicamentoList = [];
 
   void removeServiceCard(index) {
     setState(() {
@@ -36,10 +36,7 @@ class _HomePageState extends State<HomePage> {
   void _addMedicamento() {
     setState(() {
       _medicamentoList.add(
-        _Medicamento(
-          onDelete: removeServiceCard,
-          yourText: medicamentoInput.text,
-        ),
+        medicamentoInput.text,
       );
     });
   }
@@ -453,9 +450,14 @@ class _HomePageState extends State<HomePage> {
                     height: 16,
                   ),
                   Wrap(
-                    spacing: 8.0, // gap between adjacent chips
-                    runSpacing: 4.0, // gap between lines
-                    children: _medicamentoList,
+                    spacing: 8.0,
+                    runSpacing: 4.0,
+                    children: _medicamentoList
+                        .map((e) => _Medicamento(
+                              onDelete: removeServiceCard,
+                              yourText: e,
+                            ))
+                        .toList(),
                   ),
                 ]),
               ),
@@ -480,7 +482,7 @@ class _HomePageState extends State<HomePage> {
                       content: BarcodeWidget(
                         barcode: Barcode.qrCode(),
                         data:
-                            'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}',
+                            'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}/medicamentos:${_medicamentoList.toString()}',
                         width: 200,
                         height: 200,
                       ),
