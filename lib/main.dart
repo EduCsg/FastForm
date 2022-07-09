@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
-import './screens/onboarding_page.dart';
-import './screens/home_page.dart';
+import 'screens/home/home_page.dart';
+import 'screens/onboarding/onboarding_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
