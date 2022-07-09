@@ -1,0 +1,10 @@
+export 'inputs/nome.dart';
+export 'inputs/mae.dart';
+export 'inputs/pai.dart';
+export 'inputs/data.dart';
+export 'inputs/telefone.dart';
+export 'inputs/endereco.dart';
+export 'inputs/numero.dart';
+export 'inputs/cpf.dart';
+export 'inputs/rg.dart';
+export 'inputs/medicamentos.dart';
