@@ -25,8 +25,6 @@ SizedBox buildBottom(
         children: [
           ElevatedButton(
             onPressed: () {
-              debugPrint(
-                  'nome:${nomeInput.text}/mae:${maeInput.text}/pai:${paiInput.text}/data:${dataInput.text}/telefone:${telefoneInput.text}/endereco:${enderecoInput.text}/num:${numInput.text}/cpf:${cpfInput.text}/rg:${rgInput.text}/medicamentos:${lists.medicamentoListString.toString()}');
               showDialog(
                 context: context,
                 builder: (_) => AlertDialog(
