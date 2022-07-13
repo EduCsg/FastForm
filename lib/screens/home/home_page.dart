@@ -22,7 +22,19 @@ class _HomePageState extends State<HomePage> {
         title: 'Formulário',
       ),
       body: const BuildBody(),
-      bottomNavigationBar: BuildBottom(size: size),
+      bottomNavigationBar: buildBottom(
+        context,
+        size,
+        inputsContollers.nomeInput,
+        inputsContollers.maeInput,
+        inputsContollers.paiInput,
+        inputsContollers.dataInput,
+        inputsContollers.telefoneInput,
+        inputsContollers.enderecoInput,
+        inputsContollers.numInput,
+        inputsContollers.cpfInput,
+        inputsContollers.rgInput,
+      ),
     );
   }
 }
