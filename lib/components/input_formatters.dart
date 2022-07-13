@@ -128,11 +128,11 @@ class RgInputFormatter extends TextInputFormatter {
       newText.write('${newValue.text.substring(0, substrIndex = 2)}.');
       if (newValue.selection.end >= 2) selectionIndex++;
     }
-    if (newValueLength >= 7) {
+    if (newValueLength >= 6) {
       newText.write('${newValue.text.substring(2, substrIndex = 5)}.');
       if (newValue.selection.end >= 5) selectionIndex++;
     }
-    if (newValueLength >= 10) {
+    if (newValueLength >= 9) {
       newText.write('${newValue.text.substring(5, substrIndex = 8)}-');
       if (newValue.selection.end >= 8) selectionIndex++;
     }
