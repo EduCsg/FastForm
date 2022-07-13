@@ -7,22 +7,12 @@ class BuildBody extends StatefulWidget {
   const BuildBody({Key? key}) : super(key: key);
 
   @override
-  State<BuildBody> createState() => _BuildBodyState();
+  State<BuildBody> createState() => BuildBodyState();
 }
 
-class _BuildBodyState extends State<BuildBody> {
-  TextEditingController nomeInput = TextEditingController();
-  TextEditingController maeInput = TextEditingController();
-  TextEditingController paiInput = TextEditingController();
-  TextEditingController dataInput = TextEditingController();
-  TextEditingController telefoneInput = TextEditingController();
-  TextEditingController enderecoInput = TextEditingController();
-  TextEditingController numInput = TextEditingController();
-  TextEditingController cpfInput = TextEditingController();
-  TextEditingController rgInput = TextEditingController();
+final inputsContollers = InputsControllers();
 
-  TextEditingController medicamentoInput = TextEditingController();
-
+class BuildBodyState extends State<BuildBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -48,21 +38,21 @@ class _BuildBodyState extends State<BuildBody> {
               ),
 
               //nome completo
-              WidgetNomeInput(nomeInput: nomeInput),
+              WidgetNomeInput(nomeInput: inputsContollers.nomeInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
               //nome da mae
-              WidgetMaeInput(maeInput: maeInput),
+              WidgetMaeInput(maeInput: inputsContollers.maeInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
               //nome do pai
-              WidgetPaiInput(paiInput: paiInput),
+              WidgetPaiInput(paiInput: inputsContollers.paiInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
@@ -70,11 +60,12 @@ class _BuildBodyState extends State<BuildBody> {
 
               Row(
                 children: [
-                  WidgetDataInput(dataInput: dataInput),
+                  WidgetDataInput(dataInput: inputsContollers.dataInput),
                   const SizedBox(
                     width: kDefaultPadding * 0.75,
                   ),
-                  WidgetTelefoneInput(telefoneInput: telefoneInput)
+                  WidgetTelefoneInput(
+                      telefoneInput: inputsContollers.telefoneInput)
                 ],
               ),
 
@@ -84,11 +75,12 @@ class _BuildBodyState extends State<BuildBody> {
 
               Row(
                 children: [
-                  WidgetEnderecoInput(enderecoInput: enderecoInput),
+                  WidgetEnderecoInput(
+                      enderecoInput: inputsContollers.enderecoInput),
                   const SizedBox(
                     width: kDefaultPadding,
                   ),
-                  WidgetNumInput(numInput: numInput),
+                  WidgetNumInput(numInput: inputsContollers.numInput),
                 ],
               ),
 
@@ -96,13 +88,13 @@ class _BuildBodyState extends State<BuildBody> {
                 height: kDefaultPadding * 0.75,
               ),
 
-              WidgetCpfInput(cpfInput: cpfInput),
+              WidgetCpfInput(cpfInput: inputsContollers.cpfInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
-              WidgetRgInput(rgInput: rgInput),
+              WidgetRgInput(rgInput: inputsContollers.rgInput),
 
               const SizedBox(
                 height: kDefaultPadding,
@@ -116,4 +108,17 @@ class _BuildBodyState extends State<BuildBody> {
       ),
     );
   }
+}
+
+class InputsControllers {
+  TextEditingController nomeInput = TextEditingController();
+  TextEditingController maeInput = TextEditingController();
+  TextEditingController paiInput = TextEditingController();
+  TextEditingController dataInput = TextEditingController();
+  TextEditingController telefoneInput = TextEditingController();
+  TextEditingController enderecoInput = TextEditingController();
+  TextEditingController numInput = TextEditingController();
+  TextEditingController cpfInput = TextEditingController();
+  TextEditingController rgInput = TextEditingController();
+  TextEditingController medicamentoInput = TextEditingController();
 }
