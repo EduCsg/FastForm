@@ -12,22 +12,23 @@ class WidgetMedicamentoInput extends StatefulWidget {
   State<WidgetMedicamentoInput> createState() => _WidgetMedicamentoInputState();
 }
 
+final lists = MedicamentoListString();
+
 class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
-  final List<String> _medicamentoListString = [];
-  final List<_Medicamento> _medicamentoListWidget = [];
   TextEditingController medicamentoInput = TextEditingController();
+  final List<_Medicamento> _medicamentoListWidget = [];
 
   void removeServiceCard(index) {
     setState(() {
       _medicamentoListWidget.remove(index);
-      _medicamentoListString
-          .removeAt(_medicamentoListString.indexOf(index.yourText));
+      lists.medicamentoListString
+          .removeAt(lists.medicamentoListString.indexOf(index.yourText));
     });
   }
 
   void _addMedicamento() {
     setState(() {
-      _medicamentoListString.add(
+      lists.medicamentoListString.add(
         medicamentoInput.text,
       );
       _medicamentoListWidget.add(
@@ -69,7 +70,8 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
             textInputAction: TextInputAction.send,
             onSubmitted: (value) {
               if (medicamentoInput.text.isNotEmpty) {
-                if (_medicamentoListString.contains(medicamentoInput.text)) {
+                if (lists.medicamentoListString
+                    .contains(medicamentoInput.text)) {
                   Fluttertoast.showToast(msg: "Medicamento ja registrado!");
                   medicamentoInput.clear();
                   return;
@@ -96,7 +98,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
                 highlightColor: Colors.transparent,
                 onPressed: () {
                   if (medicamentoInput.text.isNotEmpty) {
-                    if (_medicamentoListString
+                    if (lists.medicamentoListString
                         .contains(medicamentoInput.text)) {
                       Fluttertoast.showToast(msg: "Medicamento ja registrado!");
                       medicamentoInput.clear();
@@ -181,4 +183,8 @@ class _Medicamento extends StatelessWidget {
       ],
     );
   }
+}
+
+class MedicamentoListString {
+  final List<String> medicamentoListString = [];
 }
