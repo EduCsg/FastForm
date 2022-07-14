@@ -16,5 +16,4 @@ Map<String, dynamic> _$JsonDataToJson(JsonData instance) => <String, dynamic>{
       'numero': instance.numero,
       'cpf': instance.cpf,
       'rg': instance.rg,
-      'medicamentos': instance.medicamentos,
     };

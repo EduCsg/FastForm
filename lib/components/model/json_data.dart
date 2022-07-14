@@ -16,7 +16,7 @@ class JsonData {
   final String numero;
   final String cpf;
   final String rg;
-  final String medicamentos;
+  // final String medicamentos;
 
   const JsonData({
     required this.nome,
@@ -28,14 +28,14 @@ class JsonData {
     required this.numero,
     required this.cpf,
     required this.rg,
-    required this.medicamentos,
+    // required this.medicamentos,
   });
 
   Map<String, dynamic> toJson() => _$JsonDataToJson(this);
 
   @override
   String toString() =>
-      'Data{name: $nome, mae: $nomeMae, pai: $nomePai, aniversario: $aniversario, telefone: $telefone, endereco: $endereco, numero: $numero, cpf: $cpf, rg: $rg, medicamentos: $medicamentos}';
+      'Data{name: $nome, mae: $nomeMae, pai: $nomePai, aniversario: $aniversario, telefone: $telefone, endereco: $endereco, numero: $numero, cpf: $cpf, rg: $rg';
 }
 
 final jsonData = JsonData(
@@ -48,5 +48,4 @@ final jsonData = JsonData(
   numero: inputsContollers.numInput.text.toString(),
   cpf: inputsContollers.cpfInput.text.toString(),
   rg: inputsContollers.rgInput.text.toString(),
-  medicamentos: lists.medicamentoListString.toString(),
 );
