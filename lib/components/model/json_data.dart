@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../screens/home/components/body.dart';
-import '../../screens/home/components/imports.dart';
 
 part 'json_data.g.dart';
 
