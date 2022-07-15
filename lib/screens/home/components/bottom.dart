@@ -30,7 +30,7 @@ SizedBox buildBottom(
                 context: context,
                 builder: (_) => AlertDialog(
                   title: const Text(
-                    'Seu QR Code!',
+                    'As informações estão corretas?',
                     style: TextStyle(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -68,7 +68,7 @@ SizedBox buildBottom(
                 35,
               ),
             ),
-            child: const Text('Salvar Alterações'),
+            child: const Text('Gerar QrCode'),
           ),
           const SizedBox(
             height: kDefaultPadding * 0.25,

@@ -39,7 +39,7 @@ class BuildOnboarding2 extends StatelessWidget {
                 children: [
                   TextSpan(
                     text:
-                        " Após preencher o prontuário,\nna próxima vez que você for\nao hospital, basta aproximar o\naplicativo do leitor e pronto.\nO seu prontuário foi enviado!",
+                        "Basta preencher o prontuário,\nna próxima vez que você for\nao hospital apenas apresente o\nQrCode e pronto!\n\nSeu prontuário será enviado!",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w200,

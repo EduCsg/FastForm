@@ -48,7 +48,7 @@ class BuildOnboarding3 extends StatelessWidget {
                 children: [
                   TextSpan(
                     text:
-                        "Como esta é sua primeira vez,\nbasta clicar no botão\nabaixo.\n\nApós preencher seus dados,\nclique no botão\npara gerar o QR Code!",
+                        "Para preencher seu prontuário\nselecione “Quero Preencher”\ne coloque as informações pedidas.\n\nCaso queira escanear, selecione\n“Quero Escanear” na próxima tela!",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w200,

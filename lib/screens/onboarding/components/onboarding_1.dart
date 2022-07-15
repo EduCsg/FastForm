@@ -51,7 +51,7 @@ class BuildOnboarding1 extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        " é um aplicativo\nque visa a facilitação de\npreenchimento de\nformularios hospitalares.",
+                        " é um aplicativo\nque visa a facilitação de\npreenchimento de\nprontuários hospitalares.",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w200,

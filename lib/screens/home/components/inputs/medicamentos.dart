@@ -49,7 +49,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
           child: Padding(
             padding: const EdgeInsets.only(left: 3),
             child: Text(
-              'Faz uso de algum medicamento?',
+              'Faz uso de algum medicamento controlado?',
               style: TextStyle(
                 fontWeight: FontWeight.w300,
                 color: labelTextColor,
@@ -88,7 +88,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
                 Icons.medication_rounded,
                 color: iconYellowColor,
               ),
-              labelText: 'Qual?',
+              labelText: 'Quais?',
               labelStyle: TextStyle(
                 color: labelTextColor,
                 fontSize: 16,
