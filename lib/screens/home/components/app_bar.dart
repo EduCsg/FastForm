@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget buildAppBar({required String title}) {
+PreferredSizeWidget buildAppBar() {
   return AppBar(
-    title: Text(
-      title,
-      style: const TextStyle(
-        fontWeight: FontWeight.w900,
-        color: Colors.white,
-        fontSize: 30,
+    title: RichText(
+      text: const TextSpan(
+        text: 'Meu ',
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 28,
+        ),
+        children: [
+          TextSpan(
+            text: 'Prontuário',
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+              fontSize: 30,
+            ),
+          ),
+        ],
       ),
     ),
     centerTitle: true,
