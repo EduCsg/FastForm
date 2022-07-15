@@ -1,3 +1,4 @@
+import 'package:fast_form_client/screens/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -29,9 +30,27 @@ class BuildOnboardingBottom extends StatelessWidget {
               ),
               height: 120,
               color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  isFirstPage
+                      ? const SizedBox(width: 45)
+                      : SizedBox(
+                          width: 45,
+                          child: FloatingActionButton(
+                            onPressed: () => controller.previousPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            ),
+                            backgroundColor:
+                                const Color.fromARGB(255, 224, 231, 227),
+                            child: const Icon(
+                              Icons.arrow_back_ios_rounded,
+                              size: 18,
+                              color: Color.fromARGB(255, 92, 218, 189),
+                            ),
+                          ),
+                        ),
                   Center(
                     child: SmoothPageIndicator(
                       controller: controller,
@@ -51,12 +70,10 @@ class BuildOnboardingBottom extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 1000,
-                    height: 40,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color.fromRGBO(92, 218, 189, 1),
-                      ),
+                    width: 45,
+                    child: FloatingActionButton(
+                      backgroundColor: const Color.fromRGBO(92, 218, 189, 1),
+                      heroTag: 'lastBtn',
                       onPressed: () async {
                         final prefs = await SharedPreferences.getInstance();
                         prefs.setBool('showHome', true);
@@ -64,16 +81,13 @@ class BuildOnboardingBottom extends StatelessWidget {
                         // ignore: use_build_context_synchronously
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const LoginPage(),
                           ),
                         );
                       },
-                      child: const Text(
-                        "Vamos Preencher!",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                        ),
+                      child: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 18,
                       ),
                     ),
                   ),
