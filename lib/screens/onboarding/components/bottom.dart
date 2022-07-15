@@ -20,12 +20,7 @@ class BuildOnboardingBottom extends StatelessWidget {
     return Container(
       child: isLastPage
           ? Container(
-              padding: const EdgeInsets.only(
-                left: 50,
-                right: 50,
-                top: 0,
-                bottom: 20,
-              ),
+              padding: const EdgeInsets.only(left: 50, right: 50, top: 0),
               height: 120,
               color: Colors.white,
               child: Row(
