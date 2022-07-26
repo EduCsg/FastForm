@@ -32,7 +32,7 @@ class WidgetTelefoneInput extends StatelessWidget {
             border: InputBorder.none,
             prefixIcon: Icon(
               Icons.call,
-              color: iconYellowColor,
+              color: scannerColor,
             ),
             labelText: 'Telefone',
             labelStyle: TextStyle(

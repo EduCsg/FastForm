@@ -26,7 +26,7 @@ class WidgetDataInput extends StatelessWidget {
             border: InputBorder.none,
             prefixIcon: Icon(
               Icons.cake_rounded,
-              color: iconYellowColor,
+              color: scannerColor,
             ), //icon of text field
             labelText: "Data",
             labelStyle: TextStyle(

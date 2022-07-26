@@ -24,7 +24,7 @@ class WidgetEnderecoInput extends StatelessWidget {
             border: InputBorder.none,
             prefixIcon: Icon(
               Icons.other_houses,
-              color: iconYellowColor,
+              color: scannerColor,
             ),
             labelText: 'Endereço',
             labelStyle: TextStyle(

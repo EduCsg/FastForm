@@ -23,7 +23,7 @@ class WidgetPaiInput extends StatelessWidget {
           border: InputBorder.none,
           prefixIcon: Icon(
             Icons.person,
-            color: iconYellowColor,
+            color: scannerColor,
           ),
           label: RichText(
             text: TextSpan(

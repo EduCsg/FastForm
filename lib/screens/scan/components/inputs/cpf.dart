@@ -31,7 +31,7 @@ class WidgetCpfInput extends StatelessWidget {
           border: InputBorder.none,
           prefixIcon: Icon(
             Icons.list_alt_rounded,
-            color: iconYellowColor,
+            color: scannerColor,
           ),
           labelText: 'CPF',
           labelStyle: TextStyle(

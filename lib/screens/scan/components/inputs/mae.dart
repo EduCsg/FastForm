@@ -23,7 +23,7 @@ class WidgetMaeInput extends StatelessWidget {
           border: InputBorder.none,
           prefixIcon: Icon(
             Icons.person,
-            color: iconYellowColor,
+            color: scannerColor,
           ),
           labelText: 'Nome da Mãe',
           labelStyle: TextStyle(

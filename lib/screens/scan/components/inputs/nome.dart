@@ -23,7 +23,7 @@ class WidgetNomeInput extends StatelessWidget {
           border: InputBorder.none,
           prefixIcon: Icon(
             Icons.person,
-            color: iconYellowColor,
+            color: scannerColor,
           ),
           labelText: 'Nome Completo',
           labelStyle: TextStyle(

@@ -86,7 +86,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
               border: InputBorder.none,
               prefixIcon: Icon(
                 Icons.medication_rounded,
-                color: iconYellowColor,
+                color: scannerColor,
               ),
               labelText: 'Quais?',
               labelStyle: TextStyle(
@@ -113,7 +113,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
                 },
                 icon: Icon(
                   Icons.add,
-                  color: iconYellowColor,
+                  color: scannerColor,
                 ),
               ),
             ),
@@ -153,7 +153,7 @@ class _Medicamento extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: const Color.fromRGBO(255, 213, 125, 1),
+                color: scannerColor,
               ),
               child: Row(
                 children: [
