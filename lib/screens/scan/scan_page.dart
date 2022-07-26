@@ -1,3 +1,4 @@
+import 'package:fast_form_client/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'components/body_scan.dart';
@@ -16,24 +17,17 @@ final inputsContollers = InputsControllers();
 class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: buildAppBarScan(),
       body: const BuildBodyScan(),
-      bottomNavigationBar: buildBottomScan(
-        context,
-        size,
-        inputsContollers.nomeInput,
-        inputsContollers.maeInput,
-        inputsContollers.paiInput,
-        inputsContollers.dataInput,
-        inputsContollers.telefoneInput,
-        inputsContollers.enderecoInput,
-        inputsContollers.numInput,
-        inputsContollers.cpfInput,
-        inputsContollers.rgInput,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: scannerColor,
+        child: const Icon(
+          Icons.qr_code,
+        ),
       ),
+      bottomNavigationBar: const BuildBottomScan(),
     );
   }
 }
