@@ -1,5 +1,5 @@
-import 'package:fast_form_client/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:fast_form_client/screens/scan/components/scanner_button.dart';
 
 import 'components/body_scan.dart';
 import 'components/app_bar_scan.dart';
@@ -20,13 +20,7 @@ class _ScanPageState extends State<ScanPage> {
     return Scaffold(
       appBar: buildAppBarScan(),
       body: const BuildBodyScan(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: scannerColor,
-        child: const Icon(
-          Icons.qr_code,
-        ),
-      ),
+      floatingActionButton: const BuildScannerButton(),
       bottomNavigationBar: const BuildBottomScan(),
     );
   }
