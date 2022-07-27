@@ -18,7 +18,7 @@ class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBarScan(),
+      appBar: buildAppBarScan(context),
       body: const BuildBodyScan(),
       floatingActionButton: const BuildScannerButton(),
       bottomNavigationBar: const BuildBottomScan(),

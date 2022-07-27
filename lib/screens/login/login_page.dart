@@ -1,5 +1,5 @@
-import 'package:fast_form_client/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'components/quero_escanear.dart';
 import 'components/quero_preencher.dart';
@@ -17,6 +17,14 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
     double maxHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

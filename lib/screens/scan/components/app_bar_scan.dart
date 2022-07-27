@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-PreferredSizeWidget buildAppBarScan() {
+PreferredSizeWidget buildAppBarScan(context) {
   return AppBar(
+    systemOverlayStyle: SystemUiOverlayStyle.light,
     title: RichText(
       text: const TextSpan(
         text: 'Prontuário ',
@@ -21,5 +23,9 @@ PreferredSizeWidget buildAppBarScan() {
     centerTitle: true,
     backgroundColor: const Color.fromRGBO(242, 108, 108, 1),
     elevation: 0,
+    leading: IconButton(
+      icon: const Icon(Icons.arrow_back_rounded),
+      onPressed: () => Navigator.of(context).pop(),
+    ),
   );
 }
