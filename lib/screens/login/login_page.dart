@@ -14,12 +14,14 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    double maxHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
+          children: [
+            const Text(
               'Escolha',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 fontSize: 45,
               ),
             ),
-            Text(
+            const Text(
               'O que deseja fazer?',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
@@ -35,13 +37,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               ),
             ),
             SizedBox(
-              height: kDefaultPadding * 2,
+              height: maxHeight * 0.07,
             ),
-            QueroPreencher(),
+            const QueroPreencher(),
             SizedBox(
-              height: kDefaultPadding * 1.5,
+              height: maxHeight * 0.035,
             ),
-            QueroEscanear(),
+            const QueroEscanear(),
           ],
         ),
       ),
