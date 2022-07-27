@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.0.9
   json_annotation: ^4.4.0
   qr_code_scanner: ^1.0.0
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:
