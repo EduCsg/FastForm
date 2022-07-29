@@ -12,8 +12,6 @@ class ScanPage extends StatefulWidget {
   State<ScanPage> createState() => _ScanPageState();
 }
 
-final inputsContollers = InputsControllers();
-
 class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {

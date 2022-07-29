@@ -1,8 +1,8 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:fast_form_client/screens/home/components/imports.dart';
 import 'package:flutter/material.dart';
+import 'imports.dart';
 
-import '../../../components/model/json_data.dart';
 import '../../../constants.dart';
 
 SizedBox buildBottom(
@@ -37,7 +37,9 @@ SizedBox buildBottom(
                   content: BarcodeWidget(
                     barcode: Barcode.qrCode(),
                     data:
-                        'Informações: ${jsonData.toJson()}, medicamentos: ${lists.medicamentoListString.toString()}',
+                        "${nomeInput.text}*${maeInput.text}*${paiInput.text}*${dataInput.text}*${telefoneInput.text}*${enderecoInput.text}*${numInput.text}*${cpfInput.text}*${rgInput.text}*${lists.medicamentoListString.toString()}",
+                    // data:
+                    // 'Informações: ${jsonData.toJson()}, medicamentos: ${lists.medicamentoListString.toString()}',
                     width: 225,
                     height: 225,
                   ),

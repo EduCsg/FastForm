@@ -10,7 +10,7 @@ class BuildBodyScan extends StatefulWidget {
   State<BuildBodyScan> createState() => BuildBodyScanState();
 }
 
-final inputsContollers = InputsControllers();
+final inputsContollersScan = InputsControllersScan();
 
 class BuildBodyScanState extends State<BuildBodyScan> {
   @override
@@ -38,21 +38,21 @@ class BuildBodyScanState extends State<BuildBodyScan> {
               ),
 
               //nome completo
-              WidgetNomeInput(nomeInput: inputsContollers.nomeInput),
+              WidgetNomeInput(nomeInput: inputsContollersScan.nomeInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
               //nome da mae
-              WidgetMaeInput(maeInput: inputsContollers.maeInput),
+              WidgetMaeInput(maeInput: inputsContollersScan.maeInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
               //nome do pai
-              WidgetPaiInput(paiInput: inputsContollers.paiInput),
+              WidgetPaiInput(paiInput: inputsContollersScan.paiInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
@@ -60,12 +60,12 @@ class BuildBodyScanState extends State<BuildBodyScan> {
 
               Row(
                 children: [
-                  WidgetDataInput(dataInput: inputsContollers.dataInput),
+                  WidgetDataInput(dataInput: inputsContollersScan.dataInput),
                   const SizedBox(
                     width: kDefaultPadding * 0.75,
                   ),
                   WidgetTelefoneInput(
-                      telefoneInput: inputsContollers.telefoneInput)
+                      telefoneInput: inputsContollersScan.telefoneInput)
                 ],
               ),
 
@@ -76,11 +76,11 @@ class BuildBodyScanState extends State<BuildBodyScan> {
               Row(
                 children: [
                   WidgetEnderecoInput(
-                      enderecoInput: inputsContollers.enderecoInput),
+                      enderecoInput: inputsContollersScan.enderecoInput),
                   const SizedBox(
                     width: kDefaultPadding,
                   ),
-                  WidgetNumInput(numInput: inputsContollers.numInput),
+                  WidgetNumInput(numInput: inputsContollersScan.numInput),
                 ],
               ),
 
@@ -88,13 +88,13 @@ class BuildBodyScanState extends State<BuildBodyScan> {
                 height: kDefaultPadding * 0.75,
               ),
 
-              WidgetCpfInput(cpfInput: inputsContollers.cpfInput),
+              WidgetCpfInput(cpfInput: inputsContollersScan.cpfInput),
 
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
 
-              WidgetRgInput(rgInput: inputsContollers.rgInput),
+              WidgetRgInput(rgInput: inputsContollersScan.rgInput),
 
               const SizedBox(
                 height: kDefaultPadding,
@@ -110,7 +110,7 @@ class BuildBodyScanState extends State<BuildBodyScan> {
   }
 }
 
-class InputsControllers {
+class InputsControllersScan {
   TextEditingController nomeInput = TextEditingController();
   TextEditingController maeInput = TextEditingController();
   TextEditingController paiInput = TextEditingController();
