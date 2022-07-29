@@ -1,8 +1,8 @@
-import 'package:fast_form_client/screens/home/home_page.dart';
 import 'package:fast_form_client/screens/scan/components/body_scan.dart';
 import 'package:fast_form_client/screens/scan/scan_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants.dart';
@@ -52,6 +52,9 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     if (code == '-1') {
       Fluttertoast.showToast(msg: "Código não válido!");
       return;
+    } else if (inputsContollersScan.nomeInput.text != '') {
+      Fluttertoast.showToast(msg: "Limpe os campos antes de escanear!");
+      return;
     } else {
       updateData();
     }
@@ -65,14 +68,55 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     );
   }
 
+  clearInputs() {
+    inputsContollersScan.nomeInput.clear();
+    inputsContollersScan.maeInput.clear();
+    inputsContollersScan.paiInput.clear();
+    inputsContollersScan.dataInput.clear();
+    inputsContollersScan.telefoneInput.clear();
+    inputsContollersScan.enderecoInput.clear();
+    inputsContollersScan.numInput.clear();
+    inputsContollersScan.cpfInput.clear();
+    inputsContollersScan.rgInput.clear();
+
+    listsScan.medicamentoListWidget.clear();
+
+    if (!mounted) return;
+    Navigator.of(context).pop();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ScanPage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: readQRCode,
+    return SpeedDial(
+      spaceBetweenChildren: 15,
+      children: [
+        SpeedDialChild(
+          child: const Icon(
+            Icons.qr_code,
+            color: Colors.white,
+          ),
+          label: "Escanear",
+          backgroundColor: scannerColor,
+          onTap: readQRCode,
+        ),
+        SpeedDialChild(
+          child: const Icon(
+            Icons.cleaning_services_rounded,
+            color: Colors.white,
+          ),
+          label: "Limpar",
+          backgroundColor: scannerColor,
+          onTap: clearInputs,
+        )
+      ],
       backgroundColor: scannerColor,
-      child: const Icon(
-        Icons.qr_code,
-      ),
+      icon: Icons.menu,
+      activeIcon: Icons.close,
     );
   }
 }
