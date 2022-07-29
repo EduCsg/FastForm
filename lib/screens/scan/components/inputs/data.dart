@@ -21,6 +21,7 @@ class WidgetDataInput extends StatelessWidget {
         ),
         elevation: 1,
         child: TextField(
+          enabled: false,
           controller: dataInput,
           decoration: InputDecoration(
             border: InputBorder.none,

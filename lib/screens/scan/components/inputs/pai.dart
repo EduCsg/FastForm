@@ -18,6 +18,7 @@ class WidgetPaiInput extends StatelessWidget {
       ),
       elevation: 1,
       child: TextField(
+        enabled: false,
         controller: paiInput,
         decoration: InputDecoration(
           border: InputBorder.none,

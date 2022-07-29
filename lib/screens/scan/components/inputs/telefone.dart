@@ -20,7 +20,8 @@ class WidgetTelefoneInput extends StatelessWidget {
           Radius.circular(12),
         ),
         elevation: 1,
-        child: TextFormField(
+        child: TextField(
+          enabled: false,
           controller: telefoneInput,
           keyboardType: TextInputType.number,
           inputFormatters: [

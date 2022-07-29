@@ -21,6 +21,7 @@ class WidgetNumInput extends StatelessWidget {
         ),
         elevation: 1,
         child: TextField(
+          enabled: false,
           controller: numInput,
           inputFormatters: [
             FilteringTextInputFormatter.digitsOnly,

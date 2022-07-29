@@ -21,6 +21,7 @@ class WidgetCpfInput extends StatelessWidget {
       ),
       elevation: 1,
       child: TextField(
+        enabled: false,
         controller: cpfInput,
         keyboardType: TextInputType.number,
         inputFormatters: [

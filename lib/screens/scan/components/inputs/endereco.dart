@@ -19,6 +19,7 @@ class WidgetEnderecoInput extends StatelessWidget {
         ),
         elevation: 1,
         child: TextField(
+          enabled: false,
           controller: enderecoInput,
           decoration: InputDecoration(
             border: InputBorder.none,

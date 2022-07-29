@@ -21,6 +21,7 @@ class WidgetRgInput extends StatelessWidget {
       ),
       elevation: 1,
       child: TextField(
+        enabled: false,
         controller: rgInput,
         keyboardType: TextInputType.number,
         inputFormatters: [

@@ -44,7 +44,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
           ),
           elevation: 1,
           child: TextField(
-            textInputAction: TextInputAction.send,
+            enabled: false,
             controller: medicamentoInput,
             decoration: InputDecoration(
               border: InputBorder.none,
