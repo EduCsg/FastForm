@@ -102,7 +102,6 @@ class Medicamento extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  const SizedBox(width: 12),
                 ],
               ),
             ),
