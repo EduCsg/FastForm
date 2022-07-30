@@ -103,11 +103,6 @@ class Medicamento extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  const Icon(
-                    Icons.close,
-                    color: Color.fromRGBO(15, 15, 15, 1),
-                    size: 18,
-                  ),
                 ],
               ),
             ),
