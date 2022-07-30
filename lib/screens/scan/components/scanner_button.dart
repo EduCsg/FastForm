@@ -1,11 +1,13 @@
-import 'package:fast_form_client/screens/scan/components/body_scan.dart';
-import 'package:fast_form_client/screens/scan/scan_page.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants.dart';
+import '../components/body_scan.dart';
+import '../scan_page.dart';
 import 'imports.dart';
 
 class BuildScannerButton extends StatefulWidget {
@@ -59,7 +61,6 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       updateData();
     }
 
-    if (!mounted) return;
     Navigator.of(context).pop();
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -81,7 +82,6 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
 
     listsScan.medicamentoListWidget.clear();
 
-    if (!mounted) return;
     Navigator.of(context).pop();
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -92,31 +92,33 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SpeedDial(
-      spaceBetweenChildren: 15,
-      children: [
-        SpeedDialChild(
-          child: const Icon(
-            Icons.qr_code,
-            color: Colors.white,
+    return SingleChildScrollView(
+      child: SpeedDial(
+        spaceBetweenChildren: 15,
+        children: [
+          SpeedDialChild(
+            child: const Icon(
+              Icons.qr_code,
+              color: Colors.white,
+            ),
+            label: "Escanear",
+            backgroundColor: scannerColor,
+            onTap: readQRCode,
           ),
-          label: "Escanear",
-          backgroundColor: scannerColor,
-          onTap: readQRCode,
-        ),
-        SpeedDialChild(
-          child: const Icon(
-            Icons.cleaning_services_rounded,
-            color: Colors.white,
-          ),
-          label: "Limpar",
-          backgroundColor: scannerColor,
-          onTap: clearInputs,
-        )
-      ],
-      backgroundColor: scannerColor,
-      icon: Icons.menu,
-      activeIcon: Icons.close,
+          SpeedDialChild(
+            child: const Icon(
+              Icons.cleaning_services_rounded,
+              color: Colors.white,
+            ),
+            label: "Limpar",
+            backgroundColor: scannerColor,
+            onTap: clearInputs,
+          )
+        ],
+        backgroundColor: scannerColor,
+        icon: Icons.menu,
+        activeIcon: Icons.close,
+      ),
     );
   }
 }
