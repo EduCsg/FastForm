@@ -33,11 +33,8 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
 
       var resDividido = resEscaneadoBruto.split('*');
 
-      listsScan.medicamentoListWidget.add(
-        Medicamento(
-          yourText: resDividido.last,
-        ),
-      );
+      var medicamentosArr =
+          resDividido.last.replaceAll('[', '').replaceAll(']', '').split(',');
 
       var i = 0;
       inputsContollersScan.nomeInput.text = resDividido[i++];
@@ -49,24 +46,41 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       inputsContollersScan.numInput.text = resDividido[i++];
       inputsContollersScan.cpfInput.text = resDividido[i++];
       inputsContollersScan.rgInput.text = resDividido[i++];
+
+      for (var i = 0; i < medicamentosArr.length; i++) {
+        listsScan.medicamentoListWidget.add(
+          Medicamento(
+            yourText: medicamentosArr[i],
+          ),
+        );
+      }
     }
 
     if (code == '-1') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ScanPage(),
+        ),
+      );
+
       Fluttertoast.showToast(msg: "Código não válido!");
-      return;
     } else if (inputsContollersScan.nomeInput.text != '') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ScanPage(),
+        ),
+      );
+
       Fluttertoast.showToast(msg: "Limpe os campos antes de escanear!");
-      return;
     } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ScanPage(),
+        ),
+      );
+
       updateData();
     }
-
-    Navigator.of(context).pop();
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ScanPage(),
-      ),
-    );
   }
 
   clearInputs() {
@@ -81,13 +95,6 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     inputsContollersScan.rgInput.clear();
 
     listsScan.medicamentoListWidget.clear();
-
-    Navigator.of(context).pop();
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ScanPage(),
-      ),
-    );
   }
 
   @override
@@ -103,7 +110,12 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
             ),
             label: "Escanear",
             backgroundColor: scannerColor,
-            onTap: readQRCode,
+            onTap: () {
+              readQRCode();
+              Future.delayed(const Duration(milliseconds: 500), () {
+                Navigator.of(context).pop();
+              });
+            },
           ),
           SpeedDialChild(
             child: const Icon(
@@ -112,7 +124,16 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
             ),
             label: "Limpar",
             backgroundColor: scannerColor,
-            onTap: clearInputs,
+            onTap: () {
+              clearInputs();
+
+              // Navigator.of(context).pop();
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => const ScanPage(),
+              //   ),
+              // );
+            },
           )
         ],
         backgroundColor: scannerColor,
