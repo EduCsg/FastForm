@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -57,28 +55,8 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     }
 
     if (code == '-1') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ScanPage(),
-        ),
-      );
-
       Fluttertoast.showToast(msg: "Código não válido!");
-    } else if (inputsContollersScan.nomeInput.text != '') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ScanPage(),
-        ),
-      );
-
-      Fluttertoast.showToast(msg: "Limpe os campos antes de escanear!");
     } else {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ScanPage(),
-        ),
-      );
-
       updateData();
     }
   }
@@ -111,10 +89,12 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
             label: "Escanear",
             backgroundColor: scannerColor,
             onTap: () {
-              readQRCode();
-              Future.delayed(const Duration(milliseconds: 500), () {
-                Navigator.of(context).pop();
-              });
+              if (inputsContollersScan.nomeInput.text != '') {
+                Fluttertoast.showToast(
+                    msg: "Limpe os campos antes de escanear!");
+              } else {
+                readQRCode();
+              }
             },
           ),
           SpeedDialChild(
