@@ -1,6 +1,7 @@
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:fast_form_client/screens/home/components/imports.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'imports.dart';
 
 import '../../../constants.dart';
@@ -26,42 +27,113 @@ SizedBox buildBottom(
         children: [
           ElevatedButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (_) => AlertDialog(
-                  title: const Text(
-                    'As informações estão corretas?',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                  content: BarcodeWidget(
-                    barcode: Barcode.qrCode(),
-                    data:
-                        "${nomeInput.text}*${maeInput.text}*${paiInput.text}*${dataInput.text}*${telefoneInput.text}*${enderecoInput.text}*${numInput.text}*${cpfInput.text}*${rgInput.text}*${lists.medicamentoListString.toString()}",
-                    // data:
-                    // 'Informações: ${jsonData.toJson()}, medicamentos: ${lists.medicamentoListString.toString()}',
-                    width: 225,
-                    height: 225,
-                  ),
-                  actions: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color.fromRGBO(91, 217, 189, 1),
-                      ),
-                      child: const Text(
-                        'Fechar',
-                        style: TextStyle(
-                          color: Colors.white,
+              if (nomeInput.text.isEmpty ||
+                  maeInput.text.isEmpty ||
+                  dataInput.text.isEmpty ||
+                  telefoneInput.text.isEmpty ||
+                  enderecoInput.text.isEmpty ||
+                  numInput.text.isEmpty ||
+                  cpfInput.text.isEmpty ||
+                  rgInput.text.isEmpty) {
+                Fluttertoast.showToast(
+                    msg: 'Preencha todas informações\nantes de continuar!');
+              } else {
+                showDialog(
+                  context: context,
+                  builder: (_) => Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AlertDialog(
+                        title: const Text(
+                          'As informações estão corretas?',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
                         ),
+                        content: informacoesCorretas(
+                            nomeInput,
+                            maeInput,
+                            paiInput,
+                            dataInput,
+                            telefoneInput,
+                            enderecoInput,
+                            numInput,
+                            cpfInput,
+                            rgInput),
+                        actions: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.transparent,
+                              elevation: 0.0,
+                              shadowColor: Colors.transparent,
+                            ),
+                            child: Text(
+                              'Voltar',
+                              style: TextStyle(
+                                color: labelTextColor,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: const Color.fromRGBO(91, 217, 189, 1),
+                            ),
+                            child: const Text(
+                              'Sim!',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              showDialog(
+                                context: context,
+                                builder: (_) => AlertDialog(
+                                  title: const Text(
+                                    'Seu QR Code',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: BarcodeWidget(
+                                    barcode: Barcode.qrCode(),
+                                    data:
+                                        "${nomeInput.text}*${maeInput.text}*${paiInput.text}*${dataInput.text}*${telefoneInput.text}*${enderecoInput.text}*${numInput.text}*${cpfInput.text}*${rgInput.text}*${lists.medicamentoListString.toString()}",
+                                    width: 250,
+                                    height: 250,
+                                  ),
+                                  actions: [
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: const Color.fromRGBO(
+                                            91, 217, 189, 1),
+                                      ),
+                                      child: const Text(
+                                        'Fechar',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                barrierDismissible: false,
+                              );
+                            },
+                          ),
+                        ],
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
-                barrierDismissible: false,
-              );
+                    ],
+                  ),
+                  barrierDismissible: false,
+                );
+              }
             },
             style: ElevatedButton.styleFrom(
               primary: const Color.fromRGBO(91, 217, 189, 1),
@@ -86,5 +158,64 @@ SizedBox buildBottom(
         ],
       ),
     ),
+  );
+}
+
+Column informacoesCorretas(
+    TextEditingController nomeInput,
+    TextEditingController maeInput,
+    TextEditingController paiInput,
+    TextEditingController dataInput,
+    TextEditingController telefoneInput,
+    TextEditingController enderecoInput,
+    TextEditingController numInput,
+    TextEditingController cpfInput,
+    TextEditingController rgInput) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Nome: ${nomeInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Mãe: ${maeInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      //TODO: verificacao paiInput vazio
+      Text('Pai: ${paiInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Data de Nascimento: ${dataInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Telefone: ${telefoneInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Endereço: ${enderecoInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('Número da casa: ${numInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('CPF: ${cpfInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text('RG: ${rgInput.text}'),
+      const SizedBox(
+        height: 6,
+      ),
+      Text(
+          'Medicamentos Controlados: ${lists.medicamentoListString.toString().replaceAll('[', '').replaceAll(']', '')}'),
+    ],
   );
 }
