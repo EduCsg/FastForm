@@ -44,12 +44,14 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       inputsContollersScan.cpfInput.text = resDividido[i++];
       inputsContollersScan.rgInput.text = resDividido[i++];
 
-      for (var i = 0; i < medicamentosArr.length; i++) {
-        listsScan.medicamentoListWidget.add(
-          Medicamento(
-            yourText: medicamentosArr[i],
-          ),
-        );
+      if (medicamentosArr[0] != '') {
+        for (var i = 0; i < medicamentosArr.length; i++) {
+          listsScan.medicamentoListWidget.add(
+            Medicamento(
+              yourText: medicamentosArr[i],
+            ),
+          );
+        }
       }
     }
 
