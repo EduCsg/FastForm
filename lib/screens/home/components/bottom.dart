@@ -102,7 +102,7 @@ SizedBox buildBottom(
                                   content: BarcodeWidget(
                                     barcode: Barcode.qrCode(),
                                     data:
-                                        "${nomeInput.text}*${maeInput.text}*${paiInput.text}*${dataInput.text}*${telefoneInput.text}*${enderecoInput.text}*${numInput.text}*${cpfInput.text}*${rgInput.text}*${lists.medicamentoListString.toString()}",
+                                        "fastformcode*${nomeInput.text}*${maeInput.text}*${paiInput.text}*${dataInput.text}*${telefoneInput.text}*${enderecoInput.text}*${numInput.text}*${cpfInput.text}*${rgInput.text}*${lists.medicamentoListString.toString()}",
                                     width: 250,
                                     height: 250,
                                   ),

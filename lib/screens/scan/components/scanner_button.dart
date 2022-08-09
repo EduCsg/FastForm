@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants.dart';
 import '../components/body_scan.dart';
-import '../scan_page.dart';
 import 'imports.dart';
 
 class BuildScannerButton extends StatefulWidget {
@@ -26,15 +25,15 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       ScanMode.QR,
     );
 
+    setState(() => resEscaneadoBruto = code);
+
+    var resDividido = resEscaneadoBruto.split('*');
+
+    var medicamentosArr =
+        resDividido.last.replaceAll('[', '').replaceAll(']', '').split(',');
+
     void updateData() {
-      setState(() => resEscaneadoBruto = code);
-
-      var resDividido = resEscaneadoBruto.split('*');
-
-      var medicamentosArr =
-          resDividido.last.replaceAll('[', '').replaceAll(']', '').split(',');
-
-      var i = 0;
+      var i = 1;
       inputsContollersScan.nomeInput.text = resDividido[i++];
       inputsContollersScan.maeInput.text = resDividido[i++];
       inputsContollersScan.paiInput.text = resDividido[i++];
@@ -54,7 +53,7 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       }
     }
 
-    if (code == '-1') {
+    if (code == '-1' || resDividido.first != 'fastformcode') {
       Fluttertoast.showToast(msg: "Código não válido!");
     } else {
       updateData();
