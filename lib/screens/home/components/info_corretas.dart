@@ -26,11 +26,18 @@ Column informacoesCorretas(
       const SizedBox(
         height: 6,
       ),
-      //TODO: verificacao paiInput vazio
-      Text('Pai: ${paiInput.text}'),
-      const SizedBox(
-        height: 6,
-      ),
+      paiInput.text.isNotEmpty
+          ? Column(
+              children: [
+                Text('Pai: ${paiInput.text}'),
+                const SizedBox(
+                  height: 6,
+                ),
+              ],
+            )
+          : const SizedBox(
+              height: 0,
+            ),
       Text('Data de Nascimento: ${dataInput.text}'),
       const SizedBox(
         height: 6,
@@ -55,8 +62,12 @@ Column informacoesCorretas(
       const SizedBox(
         height: 6,
       ),
-      Text(
-          'Medicamentos Controlados: ${lists.medicamentoListString.toString().replaceAll('[', '').replaceAll(']', '')}'),
+      lists.medicamentoListString.isEmpty
+          ? SizedBox(
+              height: 0,
+            )
+          : Text(
+              'Medicamentos Controlados: ${lists.medicamentoListString.toString().replaceAll('[', '').replaceAll(']', '')}'),
     ],
   );
 }
