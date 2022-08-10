@@ -36,28 +36,18 @@ class BuildBodyScanState extends State<BuildBodyScan> {
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome completo
               WidgetNomeInput(nomeInput: inputsContollersScan.nomeInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome da mae
               WidgetMaeInput(maeInput: inputsContollersScan.maeInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome do pai
               WidgetPaiInput(paiInput: inputsContollersScan.paiInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               Row(
                 children: [
                   WidgetDataInput(dataInput: inputsContollersScan.dataInput),
@@ -68,11 +58,9 @@ class BuildBodyScanState extends State<BuildBodyScan> {
                       telefoneInput: inputsContollersScan.telefoneInput)
                 ],
               ),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               Row(
                 children: [
                   WidgetEnderecoInput(
@@ -83,24 +71,17 @@ class BuildBodyScanState extends State<BuildBodyScan> {
                   WidgetNumInput(numInput: inputsContollersScan.numInput),
                 ],
               ),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               WidgetCpfInput(cpfInput: inputsContollersScan.cpfInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               WidgetRgInput(rgInput: inputsContollersScan.rgInput),
-
               const SizedBox(
                 height: kDefaultPadding,
               ),
-
-              //qual?
               const WidgetMedicamentoInput(),
             ]),
           ),

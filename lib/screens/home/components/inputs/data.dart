@@ -27,7 +27,7 @@ class WidgetDataInput extends StatelessWidget {
             prefixIcon: Icon(
               Icons.cake_rounded,
               color: iconYellowColor,
-            ), //icon of text field
+            ),
             labelText: "Nasc.",
             labelStyle: TextStyle(
               color: labelTextColor,

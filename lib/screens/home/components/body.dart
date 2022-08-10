@@ -36,28 +36,18 @@ class BuildBodyState extends State<BuildBody> {
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome completo
               WidgetNomeInput(nomeInput: inputsContollers.nomeInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome da mae
               WidgetMaeInput(maeInput: inputsContollers.maeInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
-              //nome do pai
               WidgetPaiInput(paiInput: inputsContollers.paiInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               Row(
                 children: [
                   WidgetDataInput(dataInput: inputsContollers.dataInput),
@@ -68,11 +58,9 @@ class BuildBodyState extends State<BuildBody> {
                       telefoneInput: inputsContollers.telefoneInput)
                 ],
               ),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               Row(
                 children: [
                   WidgetEnderecoInput(
@@ -83,24 +71,17 @@ class BuildBodyState extends State<BuildBody> {
                   WidgetNumInput(numInput: inputsContollers.numInput),
                 ],
               ),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               WidgetCpfInput(cpfInput: inputsContollers.cpfInput),
-
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-
               WidgetRgInput(rgInput: inputsContollers.rgInput),
-
               const SizedBox(
                 height: kDefaultPadding,
               ),
-
-              //qual?
               const WidgetMedicamentoInput(),
             ]),
           ),

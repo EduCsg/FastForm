@@ -107,13 +107,6 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
             backgroundColor: scannerColor,
             onTap: () {
               clearInputs();
-
-              // Navigator.of(context).pop();
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => const ScanPage(),
-              //   ),
-              // );
             },
           )
         ],

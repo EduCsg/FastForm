@@ -1,18 +1,11 @@
 import 'package:flutter/services.dart';
 
-/// Define um [TextInputFormatter] que pode ser combinado com outros
-/// para que seja possível interpolar de um para outro
-/// Usado em [CompoundableFormatter]
-
 abstract class CompoundableFormatter extends TextInputFormatter {
-  /// Tamanho máximo do Formatter
   int get maxLength;
 }
 
-/// Formata o valor do campo com a mascara de CPF `XXX.XXX.XXX-XX`
 class CpfInputFormatter extends TextInputFormatter
     implements CompoundableFormatter {
-  /// Define o tamanho máximo do campo.
   @override
   int get maxLength => 11;
 
@@ -52,8 +45,6 @@ class CpfInputFormatter extends TextInputFormatter
   }
 }
 
-/// Formata o valor do campo com a máscara ( (99) 99999-9999 ).
-/// Nono dígito automático.
 class TelefoneInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
@@ -69,7 +60,6 @@ class TelefoneInputFormatter extends TextInputFormatter {
       }
     }
 
-    /// Verifica o tamanho máximo do campo.
     if (newValueLength > 11) {
       return oldValue;
     }
@@ -106,9 +96,7 @@ class TelefoneInputFormatter extends TextInputFormatter {
   }
 }
 
-/// Formata o valor do campo com a máscara XX.XXX.XXX-XX
 class RgInputFormatter extends TextInputFormatter {
-  /// Define o tamanho máximo do campo.
   int get maxLength => 11;
 
   @override

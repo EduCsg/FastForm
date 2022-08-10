@@ -63,7 +63,7 @@ Column informacoesCorretas(
         height: 6,
       ),
       lists.medicamentoListString.isEmpty
-          ? SizedBox(
+          ? const SizedBox(
               height: 0,
             )
           : Text(
