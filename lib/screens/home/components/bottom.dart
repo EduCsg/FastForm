@@ -28,14 +28,14 @@ SizedBox buildBottom(
         children: [
           ElevatedButton(
             onPressed: () {
-              if (nomeInput.text.isEmpty ||
-                  maeInput.text.isEmpty ||
+              if (nomeInput.text.split(' ').length < 2 ||
+                  maeInput.text.split(' ').length < 2 ||
                   dataInput.text.isEmpty ||
-                  telefoneInput.text.isEmpty ||
+                  telefoneInput.text.length < 14 ||
                   enderecoInput.text.isEmpty ||
                   numInput.text.isEmpty ||
-                  cpfInput.text.isEmpty ||
-                  rgInput.text.isEmpty) {
+                  cpfInput.text.length != 14 ||
+                  rgInput.text.length < 12) {
                 Fluttertoast.showToast(
                     msg: 'Preencha todas informações\nantes de continuar!');
               } else {
