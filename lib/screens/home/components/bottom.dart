@@ -28,6 +28,7 @@ SizedBox buildBottom(
         children: [
           ElevatedButton(
             onPressed: () {
+              FocusManager.instance.primaryFocus?.unfocus();
               if (nomeInput.text.split(' ').length < 2 ||
                   maeInput.text.split(' ').length < 2 ||
                   dataInput.text.isEmpty ||
