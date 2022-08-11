@@ -26,33 +26,35 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Escolha',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 45,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Escolha',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 45,
+                ),
               ),
-            ),
-            const Text(
-              'O que deseja fazer?',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 30,
+              const Text(
+                'O que deseja fazer?',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 30,
+                ),
               ),
-            ),
-            SizedBox(
-              height: maxHeight * 0.07,
-            ),
-            const QueroPreencher(),
-            SizedBox(
-              height: maxHeight * 0.035,
-            ),
-            const QueroEscanear(),
-          ],
+              SizedBox(
+                height: maxHeight * 0.07,
+              ),
+              const QueroPreencher(),
+              SizedBox(
+                height: maxHeight * 0.035,
+              ),
+              const QueroEscanear(),
+            ],
+          ),
         ),
       ),
     );
