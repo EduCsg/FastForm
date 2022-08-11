@@ -57,7 +57,7 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     }
 
     if (code == '-1' || resDividido.first != 'fastformcode') {
-      Fluttertoast.showToast(msg: "Código não válido!");
+      Fluttertoast.showToast(msg: 'Código inválido!');
     } else {
       updateData();
 
@@ -68,6 +68,7 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
           builder: (context) => const ScanPage(),
         ),
       );
+      Fluttertoast.showToast(msg: "Código lido com sucesso!");
     }
   }
 
@@ -90,6 +91,7 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
         builder: (context) => const ScanPage(),
       ),
     );
+    Fluttertoast.showToast(msg: "Campos limpos!");
   }
 
   @override
