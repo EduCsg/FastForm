@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constants.dart';
 import '../components/body_scan.dart';
+import '../scan_page.dart';
 import 'imports.dart';
 
 class BuildScannerButton extends StatefulWidget {
@@ -59,6 +60,14 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
       Fluttertoast.showToast(msg: "Código não válido!");
     } else {
       updateData();
+
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ScanPage(),
+        ),
+      );
     }
   }
 
@@ -74,6 +83,13 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
     inputsContollersScan.rgInput.clear();
 
     listsScan.medicamentoListWidget.clear();
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ScanPage(),
+      ),
+    );
   }
 
   @override
