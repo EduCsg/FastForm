@@ -135,7 +135,7 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: const Color.fromRGBO(91, 217, 189, 1),
+                            primary: scannerColor,
                           ),
                           child: const Text(
                             'Sim',
