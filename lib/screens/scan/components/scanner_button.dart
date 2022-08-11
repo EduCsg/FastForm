@@ -109,8 +109,51 @@ class BuildScannerButtonState extends State<BuildScannerButton> {
             backgroundColor: scannerColor,
             onTap: () {
               if (inputsContollersScan.nomeInput.text != '') {
-                Fluttertoast.showToast(
-                    msg: "Limpe os campos antes de escanear!");
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text("Atenção!"),
+                      content: const Text(
+                          "Você já preencheu alguns campos, deseja limpar?"),
+                      actions: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.transparent,
+                            elevation: 0.0,
+                            shadowColor: Colors.transparent,
+                          ),
+                          child: Text(
+                            'Não',
+                            style: TextStyle(
+                              color: labelTextColor,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color.fromRGBO(91, 217, 189, 1),
+                          ),
+                          child: const Text(
+                            'Sim',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            clearInputs();
+                            Navigator.of(context).pop();
+
+                            readQRCode();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               } else {
                 readQRCode();
               }
