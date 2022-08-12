@@ -1,10 +1,10 @@
 import 'package:barcode_widget/barcode_widget.dart';
-import 'package:fast_form_client/screens/home/components/imports.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'imports.dart';
 
 import '../../../constants.dart';
+import '../components/imports.dart';
 import 'info_corretas.dart';
 
 SizedBox buildBottom(

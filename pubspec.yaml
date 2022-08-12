@@ -1,5 +1,5 @@
-name: fast_form_client
-description: A new Flutter project.
+name: fast_form
+description: Fast Form é um aplicativo que visa eliminar filas na hora da triagem hospitalar, agilizando o preenchimento dos dados através de um QR Code com um simples aplicativo Mobile, desenvolvido em Dart (Flutter).
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
