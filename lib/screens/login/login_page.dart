@@ -4,14 +4,9 @@ import 'package:flutter/services.dart';
 import 'components/quero_escanear.dart';
 import 'components/quero_preencher.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     double maxHeight = MediaQuery.of(context).size.height;

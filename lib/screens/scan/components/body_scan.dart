@@ -82,7 +82,7 @@ class BuildBodyScanState extends State<BuildBodyScan> {
               const SizedBox(
                 height: kDefaultPadding,
               ),
-              const WidgetMedicamentoInput(),
+              WidgetMedicamentoInput(),
             ]),
           ),
         ],

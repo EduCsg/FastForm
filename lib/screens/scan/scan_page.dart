@@ -5,14 +5,9 @@ import 'components/app_bar_scan.dart';
 import 'components/bottom_scan.dart';
 import 'components/scanner_button.dart';
 
-class ScanPage extends StatefulWidget {
+class ScanPage extends StatelessWidget {
   const ScanPage({Key? key}) : super(key: key);
 
-  @override
-  State<ScanPage> createState() => _ScanPageState();
-}
-
-class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,19 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 
-class WidgetMedicamentoInput extends StatefulWidget {
-  const WidgetMedicamentoInput({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<WidgetMedicamentoInput> createState() => _WidgetMedicamentoInputState();
-}
-
 final listsScan = MedicamentoListScan();
 
-class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
-  TextEditingController medicamentoInput = TextEditingController();
+class WidgetMedicamentoInput extends StatelessWidget {
+  WidgetMedicamentoInput({Key? key}) : super(key: key);
+
+  final TextEditingController medicamentoInput = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
