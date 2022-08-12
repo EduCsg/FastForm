@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fast_form_client/screens/scan/components/scanner_button.dart';
 
 import 'components/body_scan.dart';
 import 'components/app_bar_scan.dart';
 import 'components/bottom_scan.dart';
+import 'components/scanner_button.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);

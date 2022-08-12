@@ -1,9 +1,8 @@
-import 'package:fast_form_client/screens/home/components/app_bar.dart';
-import 'package:fast_form_client/screens/home/components/body.dart';
-import 'package:fast_form_client/screens/home/components/bottom.dart';
 import 'package:flutter/material.dart';
 
+import './components/app_bar.dart';
 import './components/body.dart';
+import './components/bottom.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
