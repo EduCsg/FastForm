@@ -12,15 +12,14 @@ class WidgetMedicamentoInput extends StatefulWidget {
   State<WidgetMedicamentoInput> createState() => _WidgetMedicamentoInputState();
 }
 
-final lists = MedicamentoListString();
+final lists = MedicamentosListHome();
 
 class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
   TextEditingController medicamentoInput = TextEditingController();
-  final List<_Medicamento> _medicamentoListWidget = [];
 
   void removeServiceCard(index) {
     setState(() {
-      _medicamentoListWidget.remove(index);
+      lists.medicamentoListWidget.remove(index);
       lists.medicamentoListString
           .removeAt(lists.medicamentoListString.indexOf(index.yourText));
     });
@@ -31,7 +30,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
       lists.medicamentoListString.add(
         medicamentoInput.text,
       );
-      _medicamentoListWidget.add(
+      lists.medicamentoListWidget.add(
         _Medicamento(
           onDelete: removeServiceCard,
           yourText: medicamentoInput.text,
@@ -125,7 +124,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
         Wrap(
           spacing: 8.0,
           runSpacing: 4.0,
-          children: _medicamentoListWidget,
+          children: lists.medicamentoListWidget,
         ),
       ],
     );
@@ -185,6 +184,7 @@ class _Medicamento extends StatelessWidget {
   }
 }
 
-class MedicamentoListString {
+class MedicamentosListHome {
   final List<String> medicamentoListString = [];
+  final List<_Medicamento> medicamentoListWidget = [];
 }

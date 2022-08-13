@@ -1,8 +1,9 @@
+import 'package:fast_form/screens/home/components/home_button.dart';
 import 'package:flutter/material.dart';
 
 import './components/app_bar.dart';
 import './components/body.dart';
-import './components/bottom.dart';
+import 'components/bottom.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: const BuildBody(),
-      bottomNavigationBar: buildBottom(
+      floatingActionButton: buildHomeButton(
         context,
         size,
         inputsContollers.nomeInput,
@@ -27,6 +28,7 @@ class HomePage extends StatelessWidget {
         inputsContollers.cpfInput,
         inputsContollers.rgInput,
       ),
+      bottomNavigationBar: BuildBottomHome(),
     );
   }
 }
