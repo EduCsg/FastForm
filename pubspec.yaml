@@ -43,6 +43,7 @@ dependencies:
   json_annotation: ^4.4.0
   flutter_barcode_scanner: ^2.0.0
   flutter_speed_dial: ^6.0.0
+  page_transition: "^2.0.9"
 
 dev_dependencies:
   flutter_test:
