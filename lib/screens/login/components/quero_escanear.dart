@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../../constants.dart';
 import '../../scan/scan_page.dart';
@@ -13,13 +14,14 @@ class QueroEscanear extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const ScanPage(),
-          ),
-        );
-      },
+      onTap: () => Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.rightToLeftWithFade,
+          duration: const Duration(milliseconds: 400),
+          child: const ScanPage(),
+        ),
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: SizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../../../constants.dart';
 import '../../home/home_page.dart';
@@ -14,13 +15,14 @@ class QueroPreencher extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const HomePage(),
-          ),
-        );
-      },
+      onTap: () => Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.rightToLeftWithFade,
+          duration: const Duration(milliseconds: 400),
+          child: const HomePage(),
+        ),
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Column(
