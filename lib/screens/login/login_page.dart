@@ -16,8 +16,15 @@ class LoginPage extends StatelessWidget {
       appBar:
           // preferredSize: const Size.fromHeight(0),
           AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app_rounded),
+            onPressed: () => SystemNavigator.pop(),
+            color: Colors.black,
+          ),
+        ],
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          icon: const Icon(Icons.info_outline_rounded),
           onPressed: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
