@@ -18,18 +18,18 @@ Column informacoesCorretas(
       const SizedBox(
         height: 6,
       ),
-      Text('Nome: ${nomeInput.text}'),
+      Text('Nome Completo: ${nomeInput.text}'),
       const SizedBox(
         height: 6,
       ),
-      Text('Mãe: ${maeInput.text}'),
+      Text('Nome da Mãe: ${maeInput.text}'),
       const SizedBox(
         height: 6,
       ),
       paiInput.text.isNotEmpty
           ? Column(
               children: [
-                Text('Pai: ${paiInput.text}'),
+                Text('Nome do Pai: ${paiInput.text}'),
                 const SizedBox(
                   height: 6,
                 ),
@@ -67,7 +67,7 @@ Column informacoesCorretas(
               height: 0,
             )
           : Text(
-              'Medicamentos Controlados: ${lists.medicamentoListString.toString().replaceAll('[', '').replaceAll(']', '')}'),
+              'Seus Medicamentos Controlados: \n${lists.medicamentoListString.toString().replaceAll('[', '').replaceAll(']', '')}'),
     ],
   );
 }
