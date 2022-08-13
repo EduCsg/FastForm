@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'screens/login/login_page.dart';
 import 'screens/onboarding/onboarding_page.dart';
@@ -41,12 +39,7 @@ class MyApp extends StatelessWidget {
           bodyText1: TextStyle(fontSize: 18, fontFamily: 'Roboto'),
         ),
       ),
-      home: AnimatedSplashScreen(
-        splash: SvgPicture.asset("assets/images/flutter_logo.svg"),
-        nextScreen: showHome ? const LoginPage() : const OnboardingPage(),
-        splashTransition: SplashTransition.fadeTransition,
-        duration: 500,
-      ),
+      home: showHome ? const LoginPage() : const OnboardingPage(),
     );
   }
 }
