@@ -21,37 +21,67 @@ class WidgetDataInput extends StatelessWidget {
         ),
         elevation: 1,
         child: TextField(
-          controller: dataInput,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.cake_rounded,
-              color: iconYellowColor,
+            controller: dataInput,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              prefixIcon: Icon(
+                Icons.cake_rounded,
+                color: iconYellowColor,
+              ),
+              labelText: "Nasc.",
+              labelStyle: TextStyle(
+                color: labelTextColor,
+                fontSize: 16,
+              ),
             ),
-            labelText: "Nasc.",
-            labelStyle: TextStyle(
-              color: labelTextColor,
-              fontSize: 16,
-            ),
-          ),
-          readOnly: true,
-          onTap: () async {
-            DateTime? pickedDate = await showDatePicker(
+            readOnly: true,
+            onTap: () async {
+              DateTime? pickedDate = await showDatePicker(
                 context: context,
                 initialDate: DateTime(2000),
                 firstDate: DateTime(1920),
-                lastDate: DateTime.now());
+                lastDate: DateTime.now(),
+                builder: (context, child) {
+                  return Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(
+                        primary: const Color.fromRGBO(91, 217, 189, 1),
+                        onPrimary: Colors.white,
+                        onSurface: Colors.black,
+                      ),
+                    ),
+                    child: child!,
+                  );
+                },
+              );
 
-            if (pickedDate != null) {
-              String formattedDate =
-                  DateFormat('dd/MM/yyyy').format(pickedDate);
+              if (pickedDate != null) {
+                String formattedDate =
+                    DateFormat('dd/MM/yyyy').format(pickedDate);
 
-              dataInput.text = formattedDate;
-            } else {
-              return;
+                dataInput.text = formattedDate;
+              } else {
+                return;
+              }
             }
-          },
-        ),
+
+            // async {
+            //   DateTime? pickedDate = await showDatePicker(
+            //       context: context,
+            //       initialDate: DateTime(2000),
+            //       firstDate: DateTime(1920),
+            //       lastDate: DateTime.now());
+
+            // if (pickedDate != null) {
+            //   String formattedDate =
+            //       DateFormat('dd/MM/yyyy').format(pickedDate);
+
+            //   dataInput.text = formattedDate;
+            // } else {
+            //   return;
+            // }
+            // },
+            ),
       ),
     );
   }
