@@ -58,7 +58,7 @@ SingleChildScrollView buildHomeButton(
               color: Colors.white,
             ),
             label: "Gerar Prontuário",
-            backgroundColor: Color.fromRGBO(91, 217, 189, 1),
+            backgroundColor: homeColor,
             onTap: () {
               FocusManager.instance.primaryFocus?.unfocus();
               if (nomeInput.text.split(' ').length < 2 ||
@@ -113,7 +113,7 @@ SingleChildScrollView buildHomeButton(
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: const Color.fromRGBO(91, 217, 189, 1),
+                              primary: homeColor,
                             ),
                             child: const Text(
                               'Sim!',
@@ -142,8 +142,7 @@ SingleChildScrollView buildHomeButton(
                                   actions: [
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        primary: const Color.fromRGBO(
-                                            91, 217, 189, 1),
+                                        primary: homeColor,
                                       ),
                                       child: const Text(
                                         'Fechar',
@@ -176,13 +175,13 @@ SingleChildScrollView buildHomeButton(
               color: Colors.white,
             ),
             label: "Limpar",
-            backgroundColor: Color.fromRGBO(91, 217, 189, 1),
+            backgroundColor: homeColor,
             onTap: () {
               clearInputs(context);
             },
           )
         ],
-        backgroundColor: Color.fromRGBO(91, 217, 189, 1),
+        backgroundColor: homeColor,
         icon: Icons.menu,
         activeIcon: Icons.close,
       ),

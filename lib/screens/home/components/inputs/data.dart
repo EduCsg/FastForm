@@ -45,7 +45,7 @@ class WidgetDataInput extends StatelessWidget {
                   return Theme(
                     data: Theme.of(context).copyWith(
                       colorScheme: ColorScheme.light(
-                        primary: const Color.fromRGBO(91, 217, 189, 1),
+                        primary: homeColor,
                         onPrimary: Colors.white,
                         onSurface: Colors.black,
                       ),

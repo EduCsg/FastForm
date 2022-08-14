@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../constants.dart';
+
 PreferredSizeWidget buildAppBar(context) {
   return AppBar(
     systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -25,7 +27,7 @@ PreferredSizeWidget buildAppBar(context) {
       ),
     ),
     centerTitle: true,
-    backgroundColor: const Color.fromRGBO(91, 217, 189, 1),
+    backgroundColor: homeColor,
     elevation: 0,
     leading: IconButton(
       icon: const Icon(Icons.arrow_back_rounded),
