@@ -8,6 +8,7 @@ PreferredSizeWidget buildAppBar(context) {
       text: const TextSpan(
         text: 'Meu ',
         style: TextStyle(
+          color: Colors.white,
           fontWeight: FontWeight.w500,
           fontSize: 28,
         ),
