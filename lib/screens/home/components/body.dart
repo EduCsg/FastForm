@@ -10,7 +10,7 @@ class BuildBody extends StatefulWidget {
   State<BuildBody> createState() => BuildBodyState();
 }
 
-final inputsContollers = InputsControllers();
+final inputsControllersList = InputsControllers();
 
 class BuildBodyState extends State<BuildBody> {
   @override
@@ -36,26 +36,26 @@ class BuildBodyState extends State<BuildBody> {
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-              WidgetNomeInput(nomeInput: inputsContollers.nomeInput),
+              WidgetNomeInput(nomeInput: inputsControllersList.nomeInput),
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-              WidgetMaeInput(maeInput: inputsContollers.maeInput),
+              WidgetMaeInput(maeInput: inputsControllersList.maeInput),
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-              WidgetPaiInput(paiInput: inputsContollers.paiInput),
+              WidgetPaiInput(paiInput: inputsControllersList.paiInput),
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
               Row(
                 children: [
-                  WidgetDataInput(dataInput: inputsContollers.dataInput),
+                  WidgetDataInput(dataInput: inputsControllersList.dataInput),
                   const SizedBox(
                     width: kDefaultPadding * 0.75,
                   ),
                   WidgetTelefoneInput(
-                      telefoneInput: inputsContollers.telefoneInput)
+                      telefoneInput: inputsControllersList.telefoneInput)
                 ],
               ),
               const SizedBox(
@@ -64,21 +64,21 @@ class BuildBodyState extends State<BuildBody> {
               Row(
                 children: [
                   WidgetEnderecoInput(
-                      enderecoInput: inputsContollers.enderecoInput),
+                      enderecoInput: inputsControllersList.enderecoInput),
                   const SizedBox(
                     width: kDefaultPadding,
                   ),
-                  WidgetNumInput(numInput: inputsContollers.numInput),
+                  WidgetNumInput(numInput: inputsControllersList.numInput),
                 ],
               ),
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-              WidgetCpfInput(cpfInput: inputsContollers.cpfInput),
+              WidgetCpfInput(cpfInput: inputsControllersList.cpfInput),
               const SizedBox(
                 height: kDefaultPadding * 0.75,
               ),
-              WidgetRgInput(rgInput: inputsContollers.rgInput),
+              WidgetRgInput(rgInput: inputsControllersList.rgInput),
               const SizedBox(
                 height: kDefaultPadding,
               ),

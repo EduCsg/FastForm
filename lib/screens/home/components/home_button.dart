@@ -10,15 +10,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../../constants.dart';
 
 clearInputs(context) {
-  inputsContollers.nomeInput.clear();
-  inputsContollers.maeInput.clear();
-  inputsContollers.paiInput.clear();
-  inputsContollers.dataInput.clear();
-  inputsContollers.telefoneInput.clear();
-  inputsContollers.enderecoInput.clear();
-  inputsContollers.numInput.clear();
-  inputsContollers.cpfInput.clear();
-  inputsContollers.rgInput.clear();
+  inputsControllersList.nomeInput.clear();
+  inputsControllersList.maeInput.clear();
+  inputsControllersList.paiInput.clear();
+  inputsControllersList.dataInput.clear();
+  inputsControllersList.telefoneInput.clear();
+  inputsControllersList.enderecoInput.clear();
+  inputsControllersList.numInput.clear();
+  inputsControllersList.cpfInput.clear();
+  inputsControllersList.rgInput.clear();
 
   lists.medicamentoListWidget.clear();
 
