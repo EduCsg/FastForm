@@ -122,6 +122,7 @@ SingleChildScrollView buildHomeButton(
                               ),
                             ),
                             onPressed: () {
+                              saveData();
                               Navigator.of(context).pop();
                               showDialog(
                                 context: context,

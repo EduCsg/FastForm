@@ -31,7 +31,7 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
         medicamentoInput.text,
       );
       lists.medicamentoListWidget.add(
-        _Medicamento(
+        Medicamento(
           onDelete: removeServiceCard,
           yourText: medicamentoInput.text,
         ),
@@ -131,11 +131,11 @@ class _WidgetMedicamentoInputState extends State<WidgetMedicamentoInput> {
   }
 }
 
-class _Medicamento extends StatelessWidget {
-  final Function(_Medicamento) onDelete;
+class Medicamento extends StatelessWidget {
+  final Function(Medicamento) onDelete;
   final String yourText;
 
-  const _Medicamento({
+  const Medicamento({
     Key? key,
     required this.onDelete,
     required this.yourText,
@@ -186,5 +186,5 @@ class _Medicamento extends StatelessWidget {
 
 class MedicamentosListHome {
   final List<String> medicamentoListString = [];
-  final List<_Medicamento> medicamentoListWidget = [];
+  final List<Medicamento> medicamentoListWidget = [];
 }

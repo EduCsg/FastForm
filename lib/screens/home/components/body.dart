@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
 import './imports.dart';
@@ -85,10 +86,56 @@ class BuildBodyState extends State<BuildBody> {
               const WidgetMedicamentoInput(),
             ]),
           ),
+          SizedBox(
+            height: 50,
+          ),
         ],
       ),
     );
   }
+}
+
+saveData() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  //salva no cache
+  prefs.setString('nome', inputsControllersList.nomeInput.text);
+  prefs.setString('mae', inputsControllersList.maeInput.text);
+  prefs.setString('pai', inputsControllersList.paiInput.text);
+  prefs.setString('nasc', inputsControllersList.dataInput.text);
+  prefs.setString('telefone', inputsControllersList.telefoneInput.text);
+  prefs.setString('endereco', inputsControllersList.enderecoInput.text);
+  prefs.setString('num', inputsControllersList.numInput.text);
+  prefs.setString('cpf', inputsControllersList.cpfInput.text);
+  prefs.setString('rg', inputsControllersList.rgInput.text);
+
+  prefs.setStringList('medicamentos', lists.medicamentoListString);
+}
+
+setData() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  //resgata os valores dentro do cache
+  String nome = prefs.getString('nome').toString();
+  String mae = prefs.getString('mae').toString();
+  String pai = prefs.getString('pai').toString();
+  String nasc = prefs.getString('nasc').toString();
+  String telefone = prefs.getString('telefone').toString();
+  String endereco = prefs.getString('endereco').toString();
+  String num = prefs.getString('num').toString();
+  String cpf = prefs.getString('cpf').toString();
+  String rg = prefs.getString('rg').toString();
+
+  //cola valores nos inputs
+  inputsControllersList.nomeInput.text = nome;
+  inputsControllersList.maeInput.text = mae;
+  inputsControllersList.paiInput.text = pai;
+  inputsControllersList.dataInput.text = nasc;
+  inputsControllersList.telefoneInput.text = telefone;
+  inputsControllersList.enderecoInput.text = endereco;
+  inputsControllersList.numInput.text = num;
+  inputsControllersList.cpfInput.text = cpf;
+  inputsControllersList.rgInput.text = rg;
 }
 
 class InputsControllers {

@@ -1,21 +1,72 @@
+import 'package:fast_form/screens/home/components/body.dart';
+import 'package:fast_form/screens/home/home_page.dart';
 import 'package:fast_form/screens/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../home/components/inputs/medicamentos.dart';
 import 'components/quero_escanear.dart';
 import 'components/quero_preencher.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+List? medicamentos = [];
+
+class _LoginPageState extends State<LoginPage> {
+  void removeServiceCard(index) {
+    Navigator.of(context).pop();
+
+    setState(() {
+      lists.medicamentoListWidget.remove(index);
+      lists.medicamentoListString
+          .removeAt(lists.medicamentoListString.indexOf(index.yourText));
+    });
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => HomePage(),
+      ),
+    );
+  }
+
+  setMedicamentoCache() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    medicamentos = prefs.getStringList('medicamentos');
+
+    for (var i = 0; i < medicamentos!.length; i++) {
+      lists.medicamentoListString.add(
+        medicamentos![i],
+      );
+      lists.medicamentoListWidget.add(
+        Medicamento(
+          onDelete: removeServiceCard,
+          yourText: medicamentos![i],
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    setMedicamentoCache();
+    setData();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     double maxHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar:
-          // preferredSize: const Size.fromHeight(0),
-          AppBar(
+      appBar: AppBar(
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app_rounded),
