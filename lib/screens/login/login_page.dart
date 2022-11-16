@@ -40,22 +40,25 @@ class _LoginPageState extends State<LoginPage> {
 
     medicamentos = prefs.getStringList('medicamentos');
 
-    for (var i = 0; i < medicamentos!.length; i++) {
-      lists.medicamentoListString.add(
-        medicamentos![i],
-      );
-      lists.medicamentoListWidget.add(
-        Medicamento(
-          onDelete: removeServiceCard,
-          yourText: medicamentos![i],
-        ),
-      );
+    if (medicamentos != null) {
+      for (var i = 0; i < medicamentos!.length; i++) {
+        lists.medicamentoListString.add(
+          medicamentos![i],
+        );
+        lists.medicamentoListWidget.add(
+          Medicamento(
+            onDelete: removeServiceCard,
+            yourText: medicamentos![i],
+          ),
+        );
+      }
     }
   }
 
   @override
   void initState() {
     setMedicamentoCache();
+
     setData();
 
     super.initState();

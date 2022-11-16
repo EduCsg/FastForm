@@ -6,10 +6,13 @@ import 'package:fast_form/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
 
-clearInputs(context) {
+clearInputs(context) async {
+  final prefs = await SharedPreferences.getInstance();
+
   inputsControllersList.nomeInput.clear();
   inputsControllersList.maeInput.clear();
   inputsControllersList.paiInput.clear();
@@ -21,6 +24,19 @@ clearInputs(context) {
   inputsControllersList.rgInput.clear();
 
   lists.medicamentoListWidget.clear();
+  lists.medicamentoListString.clear();
+
+  prefs.setString('nome', inputsControllersList.nomeInput.text);
+  prefs.setString('mae', inputsControllersList.maeInput.text);
+  prefs.setString('pai', inputsControllersList.paiInput.text);
+  prefs.setString('nasc', inputsControllersList.dataInput.text);
+  prefs.setString('telefone', inputsControllersList.telefoneInput.text);
+  prefs.setString('endereco', inputsControllersList.enderecoInput.text);
+  prefs.setString('num', inputsControllersList.numInput.text);
+  prefs.setString('cpf', inputsControllersList.cpfInput.text);
+  prefs.setString('rg', inputsControllersList.rgInput.text);
+
+  prefs.setStringList('medicamentos', lists.medicamentoListString);
 
   Navigator.pushReplacement(
     context,

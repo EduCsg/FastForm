@@ -127,15 +127,27 @@ setData() async {
   String rg = prefs.getString('rg').toString();
 
   //cola valores nos inputs
-  inputsControllersList.nomeInput.text = nome;
-  inputsControllersList.maeInput.text = mae;
-  inputsControllersList.paiInput.text = pai;
-  inputsControllersList.dataInput.text = nasc;
-  inputsControllersList.telefoneInput.text = telefone;
-  inputsControllersList.enderecoInput.text = endereco;
-  inputsControllersList.numInput.text = num;
-  inputsControllersList.cpfInput.text = cpf;
-  inputsControllersList.rgInput.text = rg;
+  if (nome == 'null') {
+    inputsControllersList.nomeInput.text = '';
+    inputsControllersList.maeInput.text = '';
+    inputsControllersList.paiInput.text = '';
+    inputsControllersList.dataInput.text = '';
+    inputsControllersList.telefoneInput.text = '';
+    inputsControllersList.enderecoInput.text = '';
+    inputsControllersList.numInput.text = '';
+    inputsControllersList.cpfInput.text = '';
+    inputsControllersList.rgInput.text = '';
+  } else {
+    inputsControllersList.nomeInput.text = nome;
+    inputsControllersList.maeInput.text = mae;
+    inputsControllersList.paiInput.text = pai;
+    inputsControllersList.dataInput.text = nasc;
+    inputsControllersList.telefoneInput.text = telefone;
+    inputsControllersList.enderecoInput.text = endereco;
+    inputsControllersList.numInput.text = num;
+    inputsControllersList.cpfInput.text = cpf;
+    inputsControllersList.rgInput.text = rg;
+  }
 }
 
 class InputsControllers {
